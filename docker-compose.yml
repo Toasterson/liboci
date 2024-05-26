@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  zot:
+    build:
+      context: zot
+    ports:
+      - "8080:8080"

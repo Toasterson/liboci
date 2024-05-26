@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bab1422d-f8a4-477d-aeac-71ed9d416e48" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/liboci.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build-disabled.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/gen_schema.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema/config-schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema/content-descriptor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema/defs-descriptor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema/defs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema/image-index.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema/image-layout-schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema/image-manifest-schema.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2gxevavbByyfSLrjAyUDmDw95w7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/export/home/toast/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/export/home/toast/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/export/home/toast/.local/share/Symbols/src"
+    ]
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bab1422d-f8a4-477d-aeac-71ed9d416e48" name="Changes" comment="" />
+      <created>1716643889671</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716643889671</updated>
+      <workItem from="1716643889674" duration="47000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
