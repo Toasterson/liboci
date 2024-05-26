@@ -5,6 +5,7 @@ use serde::de::DeserializeOwned;
 
 use liboci::{Config, ContentDiscoveryResponse, ImageRef, OCIDir};
 
+#[allow(dead_code)]
 fn load_from_dockerhub(image_ref: &ImageRef) -> Result<ContentDiscoveryResponse> {
     let mut content_discovery_url = image_ref.get_v2_url()?;
     let base_path = content_discovery_url.path().to_owned();
