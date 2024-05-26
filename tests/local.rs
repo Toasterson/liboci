@@ -35,3 +35,12 @@ fn load_oci_dir() -> Result<()> {
     assert_eq!(dir.manifests[0].schema_version, 2);
     Ok(())
 }
+
+#[test]
+fn load_oci_dirt2() -> Result<()> {
+    let dir = OCIDir::open("samples/bitnami-postgresql")?;
+    println!("{:#?}", dir);
+    assert_eq!(dir.index.schema_version, 2);
+    assert_eq!(dir.manifests[0].schema_version, 2);
+    Ok(())
+}

@@ -1,0 +1,1 @@
+{"schemaVersion":2,"manifests":[{"mediaType":"application/vnd.oci.image.manifest.v1+json","digest":"sha256:7004ccf4070a3024e3823e3712a00cde8c1d664e03d32e75ecb116f003f264d9","size":408,"annotations":{"org.opencontainers.image.ref.name":"16.3.0-debian-12-r8"}}]}
