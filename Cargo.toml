@@ -1,6 +1,6 @@
 [package]
 name = "liboci"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 [dependencies]
@@ -13,10 +13,12 @@ serde_json = "1.0.117"
 url = { version = "2.5.0", features = ["serde"] }
 base64 = "0.22.1"
 thiserror = "1.0.61"
+derive_builder = "0.20.0"
 
 [dev-dependencies]
 anyhow = "1.0.86"
 reqwest = { version = "0.12.4", features = ["blocking", "json"] }
+similar-asserts = "1.5.0"
 
 #[build-dependencies]
 #anyhow = "1.0.86"

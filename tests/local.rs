@@ -37,10 +37,22 @@ fn load_oci_dir() -> Result<()> {
 }
 
 #[test]
-fn load_oci_dirt2() -> Result<()> {
+fn load_oci_dir2() -> Result<()> {
     let dir = OCIDir::open("samples/bitnami-postgresql")?;
     println!("{:#?}", dir);
     assert_eq!(dir.index.schema_version, 2);
     assert_eq!(dir.manifests[0].schema_version, 2);
+    Ok(())
+}
+
+#[test]
+fn read_write_oci_dir2() -> Result<()> {
+    let dir = OCIDir::open("samples/bitnami-postgresql")?;
+    assert_eq!(dir.index.schema_version, 2);
+    assert_eq!(dir.manifests[0].schema_version, 2);
+    let serialized = serde_json::to_value(&dir.configs[0])?;
+    let mut f = File::open("samples/bitnami-postgresql/blobs/sha256/23e3fb27f226bdd839905bdf48698f1dc5f1b848962e85b74e8a2dec06dc19e0")?;
+    let orig_value: serde_json::Value = serde_json::from_reader(&mut f)?;
+    similar_asserts::assert_eq!(orig_value, serialized);
     Ok(())
 }

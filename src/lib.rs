@@ -6,6 +6,7 @@ use schemars::{JsonSchema};
 use serde::{de::Error, Deserialize, Deserializer, Serialize, Serializer};
 use base64::{Engine as _, engine::{general_purpose}};
 use chrono::Utc;
+use derive_builder::Builder;
 use schemars::schema::{InstanceType, Schema, SchemaObject, SingleOrVec};
 use serde::de::DeserializeOwned;
 use serde_json::{json, Value};
@@ -173,8 +174,9 @@ fn annotation_schema(_gen: &mut schemars::gen::SchemaGenerator) -> schemars::sch
     schemars::schema::Schema::Object(obj)
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[builder(setter(strip_option))]
 /// OpenContainer Image Index Specification
 pub struct ImageIndex {
     /// This field specifies the image index schema version as an integer
@@ -241,16 +243,18 @@ pub enum ImageLayoutVersion {
     OneZeroZero
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
 #[serde(rename_all = "camelCase")]
+#[builder(setter(strip_option))]
 /// OpenContainer Image Layout Schema
 pub struct ImageLayout {
     /// version of the OCI Image Layout (in the oci-layout file)
     image_layout_version: ImageLayoutVersion
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
 #[serde(rename_all = "camelCase")]
+#[builder(setter(strip_option))]
 /// OpenContainer Image Manifest Specification
 pub struct ImageManifest {
     /// This field specifies the image index schema version as an integer
@@ -273,8 +277,9 @@ pub struct ImageManifest {
     pub annotations: IndexMap<String, String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
 #[serde(rename_all = "camelCase")]
+#[builder(setter(strip_option))]
 /// OpenContainer Config Specification
 pub struct Config {
     #[serde(skip_serializing_if = "Option::is_none", default)]
@@ -297,8 +302,9 @@ pub struct Config {
     pub history: Vec<HistoryEntry>,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
 #[serde(rename_all = "PascalCase")]
+#[builder(setter(strip_option))]
 pub struct AppConfig {
     pub user: Option<String>,
     #[validate(inner(regex(pattern = r".{1,}")))]
@@ -312,6 +318,7 @@ pub struct AppConfig {
     #[serde(skip_serializing_if = "Option::is_none", default)]
     pub working_dir: Option<String>,
     pub labels: Option<IndexMap<String,String>>,
+    #[serde(skip_serializing_if = "Option::is_none", default)]
     pub stop_signal: Option<String>,
     #[serde(default)]
     pub args_escaped: bool,
@@ -340,6 +347,10 @@ pub struct HistoryEntry {
     pub created_by: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none", default)]
     pub comment: Option<String>,
-    #[serde(default)]
+    #[serde(default, skip_serializing_if = "is_false")]
     pub empty_layer: bool,
+}
+
+fn is_false(b: &bool) -> bool {
+    *b == false
 }
