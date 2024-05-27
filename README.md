@@ -17,6 +17,9 @@ right order, thus this spec is not covered here.
 - deriving JsonSchema, which should help libraries that use typify
 - Included documentation from jsonschema
 
+# Planned Extensions
+- [ ] compatibility spec (once ready)
+
 # Possible Extensions
 - [ ] more docs
 - [ ] implement runtime spec
