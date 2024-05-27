@@ -2,6 +2,9 @@
 name = "liboci"
 version = "0.2.0"
 edition = "2021"
+description = "Rust based OCI Schema parsing and helpers"
+license = "MPL-2"
+license-file = "LICENSE"
 
 [dependencies]
 chrono = { version = "0.4.38", features = ["serde", "now"] }
