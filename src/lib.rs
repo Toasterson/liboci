@@ -73,7 +73,7 @@ pub enum ImageRefError {
     UrlParse(#[from] url::ParseError),
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ContentDiscoveryResponse {
     pub name: String,
     pub tags: Vec<String>,
@@ -110,7 +110,7 @@ impl ImageRef {
     }
 }
 
-#[derive(JsonSchema, Debug)]
+#[derive(JsonSchema, Clone, Debug)]
 pub struct Base64(Vec<u8>);
 impl Serialize for Base64 {
     fn serialize<S: Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
@@ -136,7 +136,7 @@ impl<'de> Deserialize<'de> for Base64 {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 /// OpenContainer Content Descriptor Specification
 pub struct ContentDescriptor {
@@ -174,7 +174,7 @@ fn annotation_schema(_gen: &mut schemars::gen::SchemaGenerator) -> schemars::sch
     schemars::schema::Schema::Object(obj)
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Clone, Builder)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 #[builder(setter(strip_option))]
 /// OpenContainer Image Index Specification
@@ -198,7 +198,7 @@ pub struct ImageIndex {
     pub annotations: IndexMap<String, String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 pub struct Manifest {
     /// the mediatype of the referenced object
@@ -223,7 +223,7 @@ pub struct Manifest {
     pub annotations: IndexMap<String, String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 pub struct Platform {
     pub architecture: String,
@@ -236,14 +236,14 @@ pub struct Platform {
     pub variant: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 pub enum ImageLayoutVersion {
     #[serde(rename = "1.0.0")]
     OneZeroZero
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema, Builder)]
 #[serde(rename_all = "camelCase")]
 #[builder(setter(strip_option))]
 /// OpenContainer Image Layout Schema
@@ -252,7 +252,7 @@ pub struct ImageLayout {
     image_layout_version: ImageLayoutVersion
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema, Builder)]
 #[serde(rename_all = "camelCase")]
 #[builder(setter(strip_option))]
 /// OpenContainer Image Manifest Specification
@@ -277,7 +277,7 @@ pub struct ImageManifest {
     pub annotations: IndexMap<String, String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema, Builder)]
 #[serde(rename_all = "camelCase")]
 #[builder(setter(strip_option))]
 /// OpenContainer Config Specification
@@ -302,7 +302,7 @@ pub struct Config {
     pub history: Vec<HistoryEntry>,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema, Builder)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema, Builder)]
 #[serde(rename_all = "PascalCase")]
 #[builder(setter(strip_option))]
 pub struct AppConfig {
@@ -324,19 +324,19 @@ pub struct AppConfig {
     pub args_escaped: bool,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema)]
 #[serde(rename_all = "camelCase")]
 pub enum RootFSKind {
     Layers,
 }
 
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema)]
 pub struct RootFS {
     #[serde(rename = "type")]
     pub kind: RootFSKind,
     pub diff_ids: Vec<String>,
 }
-#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct HistoryEntry {
     #[serde(skip_serializing_if = "Option::is_none", default)]

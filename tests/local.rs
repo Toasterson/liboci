@@ -23,14 +23,14 @@ fn load_from_samples<T: DeserializeOwned>(name: &str) -> Result<T> {
 #[test]
 fn test_get_ubuntu_config() -> Result<()> {
     let config: Config = load_from_samples("library-ubuntu-config")?;
-    println!("{:#?}", config);
+    assert_eq!(config.architecture, "amd64");
+    assert_eq!(config.os, "linux");
     Ok(())
 }
 
 #[test]
 fn load_oci_dir() -> Result<()> {
     let dir = OCIDir::open("samples/ubuntu")?;
-    println!("{:#?}", dir);
     assert_eq!(dir.index.schema_version, 2);
     assert_eq!(dir.manifests[0].schema_version, 2);
     Ok(())
@@ -39,7 +39,6 @@ fn load_oci_dir() -> Result<()> {
 #[test]
 fn load_oci_dir2() -> Result<()> {
     let dir = OCIDir::open("samples/bitnami-postgresql")?;
-    println!("{:#?}", dir);
     assert_eq!(dir.index.schema_version, 2);
     assert_eq!(dir.manifests[0].schema_version, 2);
     Ok(())
